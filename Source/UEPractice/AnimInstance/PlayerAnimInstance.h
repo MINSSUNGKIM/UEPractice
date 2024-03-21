@@ -13,5 +13,9 @@ UCLASS()
 class UEPRACTICE_API UPlayerAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
-	
+protected:
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	float mMoveSpeed;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	float mDir;
 };
