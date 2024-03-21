@@ -18,4 +18,7 @@ protected:
 	float mMoveSpeed;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	float mDir;
+public:
+	 virtual void NativeInitializeAnimation();
+	 virtual void NativeUpdateAnimation(float DeltaSeconds);
 };
