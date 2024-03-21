@@ -6,10 +6,13 @@
 
 void UPlayerAnimInstance::NativeInitializeAnimation()
 {
+	Super::NativeInitializeAnimation();
 }
 
 void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
+	Super::NativeUpdateAnimation(DeltaSeconds);
+
 	AMainCharacter* OwnerPawn = Cast<AMainCharacter>(TryGetPawnOwner());
 	if (IsValid(OwnerPawn))
 	{

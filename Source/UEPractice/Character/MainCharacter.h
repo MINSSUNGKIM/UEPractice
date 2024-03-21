@@ -16,6 +16,13 @@ public:
 	AMainCharacter();
 
 protected:
+	UPROPERTY(VisibleAnywhere,BlueprintReadWrite)
+	UCameraComponent* mCamera;
+
+	UPROPERTY(VisibleAnyWhere,BlueprintReadWrite)
+	USpringArmComponent* mCameraArm;
+
+protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
