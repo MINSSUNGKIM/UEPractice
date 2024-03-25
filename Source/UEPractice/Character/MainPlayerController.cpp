@@ -4,6 +4,7 @@
 #include "MainPlayerController.h"
 
 #include "Data/Input/BasicInputDataConfig.h"
+#include "MainCharacter.h"
 
 
 void AMainPlayerController::BeginPlay()
@@ -23,6 +24,7 @@ void AMainPlayerController::SetupInputComponent()
 
 	const UBasicInputDataConfig* BasicInputDataConfig = GetDefault<UBasicInputDataConfig>();
 	EnhancedInputComponent->BindAction(BasicInputDataConfig->Move, ETriggerEvent::Triggered, this, &ThisClass::OnMove);
+	EnhancedInputComponent->BindAction(BasicInputDataConfig->Attack, ETriggerEvent::Triggered, this, &ThisClass::OnAttack);
 	}
 
 void AMainPlayerController::OnMove(const FInputActionValue& InputActionValue)
@@ -79,4 +81,10 @@ void AMainPlayerController::OnMove(const FInputActionValue& InputActionValue)
 		mMoveDir = 180.f;
 	}
 
+}
+
+void AMainPlayerController::OnAttack(const FInputActionValue& InputActionValue)
+{
+	AMainCharacter* ControlledPawnn = GetPawn<AMainCharacter>();
+	ControlledPawnn->PlayAttackMontage();
 }

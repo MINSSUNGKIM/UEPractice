@@ -34,3 +34,12 @@ void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		}
 	}
 }
+
+void UPlayerAnimInstance::PlayAttackMontage()
+{
+	if (!Montage_IsPlaying(mAttackMontageArray[0]))
+	{
+		Montage_SetPosition(mAttackMontageArray[0], 0.0f);
+		Montage_Play(mAttackMontageArray[0]);
+	}
+}

@@ -18,7 +18,13 @@ protected:
 	float mMoveSpeed;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	float mDir;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TArray<TObjectPtr<UAnimMontage>> mAttackMontageArray;
 public:
 	 virtual void NativeInitializeAnimation();
 	 virtual void NativeUpdateAnimation(float DeltaSeconds);
+
+public:
+	void PlayAttackMontage();
+
 };

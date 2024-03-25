@@ -24,5 +24,6 @@ public:
 
 public:
 	UInputAction* Move = nullptr;
+	UInputAction* Attack = nullptr;
 };
 

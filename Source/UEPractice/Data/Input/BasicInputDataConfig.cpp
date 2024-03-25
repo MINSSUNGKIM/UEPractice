@@ -23,4 +23,12 @@ UBasicInputDataConfig::UBasicInputDataConfig()
 				Move = Asset.Object;
 			}
 		}
+		{
+			static ConstructorHelpers::FObjectFinder<UInputAction> Asset
+			{ TEXT("/Script/EnhancedInput.InputAction'/Game/Input/IA_Attack.IA_Attack'") };
+			if (Asset.Succeeded())
+			{
+				Attack = Asset.Object;
+			}
+		}
 	}

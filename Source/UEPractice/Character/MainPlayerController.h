@@ -32,5 +32,6 @@ protected:
 
 protected:
 	void OnMove(const FInputActionValue& InputActionValue);
+	void OnAttack(const FInputActionValue& InputActionValue);
 	
 };

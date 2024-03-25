@@ -3,6 +3,8 @@
 
 
 #include "MainCharacter.h"
+#include "../AnimInstance/PlayerAnimInstance.h"
+
 
 // Sets default values
 AMainCharacter::AMainCharacter()
@@ -22,6 +24,8 @@ AMainCharacter::AMainCharacter()
 void AMainCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	mAnimInst = Cast<UPlayerAnimInstance>(GetMesh()->GetAnimInstance());
 	
 	
 }
@@ -41,3 +45,9 @@ void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 }
 
+void AMainCharacter::PlayAttackMontage()
+{
+	mAnimInst->PlayAttackMontage();
+}
+
+ 
