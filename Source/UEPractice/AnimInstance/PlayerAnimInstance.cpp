@@ -5,6 +5,12 @@
 #include "Character/MainCharacter.h"
 #include "Character/MainPlayerController.h"
 
+UPlayerAnimInstance::UPlayerAnimInstance()
+{
+	mAttackIndex = 0;
+	mAttackEnanble = true; //초기 공격 가능
+}
+
 void UPlayerAnimInstance::NativeInitializeAnimation()
 {
 	Super::NativeInitializeAnimation();
@@ -37,9 +43,37 @@ void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 
 void UPlayerAnimInstance::PlayAttackMontage()
 {
-	if (!Montage_IsPlaying(mAttackMontageArray[0]))
+	//공격 가능상황 판단.
+	if (!mAttackEnanble)
 	{
-		Montage_SetPosition(mAttackMontageArray[0], 0.0f);
-		Montage_Play(mAttackMontageArray[0]);
+		return;
 	}
+	mAttackEnanble = false;
+	
+	if (!Montage_IsPlaying(mAttackMontageArray[mAttackIndex]))
+	{
+		Montage_SetPosition(mAttackMontageArray[mAttackIndex], 0.0f);
+		Montage_Play(mAttackMontageArray[mAttackIndex]);
+		
+		mAttackIndex = (mAttackIndex + 1) % mAttackMontageArray.Num();
+
+	}
+}
+
+void UPlayerAnimInstance::AnimNotify_Attack()
+{
+
+}
+
+void UPlayerAnimInstance::AnimNotify_AttackEnable()
+{
+
+	mAttackEnanble = true;
+
+}
+
+void UPlayerAnimInstance::AnimNotify_AttackEnd()
+{
+	mAttackEnanble = true;
+	mAttackIndex = 0;
 }
